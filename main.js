@@ -59,10 +59,8 @@ async function batchParse(directory){
     const files = await Promise.all(promises);
     const par_promises = files.map(file => parse(file));
     const results = await Promise.all(par_promises);
-    writeCSV(results, 'records')
+    writeCSV(results, 'grades.csv')
 }
-
-
 
 async function download(csvfile, urlKey, directory){
     const data = await readCSV(csvfile);
