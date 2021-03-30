@@ -13,7 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async-get-file": "^1.0.4",
     "cors": "^2.8.5",
+    "csv": "^5.4.0",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
