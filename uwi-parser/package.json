@@ -1,0 +1,15 @@
+{
+  "name": "uwi-parser",
+  "version": "1.0.0",
+  "description": "A package for parsing uwi transcripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nicholas Mendez",
+  "license": "ISC",
+  "dependencies": {
+    "pdf2json": "^2.0.0"
+  }
+}

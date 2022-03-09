@@ -14,7 +14,7 @@ async function getPDFText(fileBuffer){
     
     let pdfText = [];
 
-    for(let page of json['formImage']['Pages']){
+    for(let page of json['Pages']){
         for(let text of page['Texts']){
             for(let rec of text['R']){
                 let token = rec['T'];
@@ -55,12 +55,13 @@ function isPassingGrade(code){
   */
 function getStudentData(text, filename){
     let inprogress = false;
-    let courses = ["2605", "2606", "2611"];
+
     let student = {
         id:undefined,
         gpa:undefined,
         fullname: undefined,
-        parsedText: undefined
+        parsedText: undefined,
+        courses: {},
     }
 
     if(filename)
@@ -82,13 +83,13 @@ function getStudentData(text, filename){
                 courseCode = token;
                 
                 course = courseCode + " " + courseNum;
-                passed = isPassingGrade(grade);
+                // passed = isPassingGrade(grade);
                 
-                if(passed){
-                    student[course] = "";
-                    console.log( course +"\t"+grade);
+                // if(passed){
+                student.courses[course] = decode(grade);
+                // console.log( course +"\t"+grade);
 
-                }
+                // }
                     
                     
             }
@@ -113,32 +114,11 @@ function getStudentData(text, filename){
         if(token === "Record%20of%3A"){
             student.id = text[ i + 1]
         }
-
-        /*
-        //we want the grades of 4 specific courses
-        if(courses.includes(token)){
-            // console.log(token, decode(text[i + 4]));
-            //grade column is 4 cols after the course column
-            if(!inprogress)
-                student[`comp${token}`] = decode(text[i + 4]); //pull grade
-            else
-                student[`comp${token}`] = 'IP'; //indicate In Progress
-        }
-
-        if(token === '2602' && text[i - 1]==='INFO'){
-           
-            if(!inprogress)
-                student[`info${token}`] = decode(text[i + 4]); //pull grade
-            else
-                student[`info${token}`] = 'IP'; //indicate In Progress
-        }
-        */
             
         i++;
     }
 
     student.parsedText = text;
-
     return student;
 }
 

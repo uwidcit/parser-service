@@ -3,7 +3,7 @@ const path = require('path')
 const multer  = require('multer')
 const cors = require('cors')
 const upload = multer({storage: multer.memoryStorage()})
-const { parse } = require('./parser');
+const { parse } = require('./uwi-parser');
 const PORT = process.env.PORT || 5001
 
 express()
