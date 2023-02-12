@@ -22,7 +22,7 @@
     "pdf2json": "^1.2.0"
   },
   "devDependencies": {
-    "got": "^11.8.1",
+    "got": "^12.5.3",
     "tape": "^5.1.1"
   }
 }
